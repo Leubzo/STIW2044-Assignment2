@@ -6,43 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        ion-header {
-            background-color: #5d1049;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        .budget-form {
-            padding: 20px;
-        }
-
-        .budget-form ion-item {
-            margin-bottom: 20px;
-        }
-
-        .budget-form ion-button {
-            display: block;
-            width: 100%;
-        }
-    </style>
-</head>
-
+    <link rel="stylesheet" href="css/budget.css" />
+    
 <body>
     <ion-app>
         <ion-header>
-            <ion-toolbar style=" --background: linear-gradient(to right, #5d1049 0%, #662454 100%);
-">
+            <ion-toolbar style=" --background: linear-gradient(to right, #5d1049 0%, #662454 100%);">
                 <ion-title>Set Your Budget</ion-title>
             </ion-toolbar>
         </ion-header>
@@ -71,6 +40,11 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <script>
         $(document).ready(function () {
+            // Populate input fields with values from local storage
+            $('#dailyBudget').val(localStorage.getItem('dailyBudget') || '');
+            $('#monthlyBudget').val(localStorage.getItem('monthlyBudget') || '');
+            $('#yearlyBudget').val(localStorage.getItem('yearlyBudget') || '');
+
             $('#budgetForm').on('submit', function (event) {
                 event.preventDefault();
                 const dailyBudget = $('#dailyBudget').val();

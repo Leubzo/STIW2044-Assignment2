@@ -11,7 +11,17 @@
 
 <body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/index.js"></script>
+    <script>
+        $(document).ready(function() { // Check if logged in
+    
+    if (!localStorage.getItem('currentUser')) {
+        window.location.href = 'login.html'; // Redirect to login if no user is logged in
+    } else {
+        window.location.href = 'main.html'; // Redirect to main page if user is logged in
+    }
+});
+
+    </script>
 </body>
 
 </html>

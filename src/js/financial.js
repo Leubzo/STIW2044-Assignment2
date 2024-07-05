@@ -16,9 +16,9 @@ $(document).ready(function () {
     });
 });
 
-function addOrUpdateExpense() { // Function to Add or Update an item to the list
-    const id = $('#expenseId').val(); // Get the expense ID
-    const amount = $('#expenseAmount').val();
+function addOrUpdateExpense() {
+    const id = $('#expenseId').val();
+    const amount = parseFloat($('#expenseAmount').val());
     const date = $('#expenseDate').val();
     const description = $('#expenseDescription').val();
     const category = $('#expenseCategory').val();
@@ -35,8 +35,8 @@ function addOrUpdateExpense() { // Function to Add or Update an item to the list
         financial[currentUser.username] = { financial: [] };
     }
 
+    // Add or update expense
     if (id) {
-        // Update existing expense
         const index = financial[currentUser.username].financial.findIndex(exp => exp.id === id);
         if (index !== -1) {
             financial[currentUser.username].financial[index] = {
@@ -48,7 +48,6 @@ function addOrUpdateExpense() { // Function to Add or Update an item to the list
             };
         }
     } else {
-        // Add new expense
         financial[currentUser.username].financial.push({
             id: Date.now().toString(),
             amount: amount,
@@ -58,13 +57,55 @@ function addOrUpdateExpense() { // Function to Add or Update an item to the list
         });
     }
 
-    localStorage.setItem('userfinancial', JSON.stringify(financial)); // Add item to local storage
-    console.log('Stored financial:', JSON.stringify(financial)); // Notify in log that item was successfully added
+    // Save updated financial data
+    localStorage.setItem('userfinancial', JSON.stringify(financial));
+
+    // Check if expenses exceed the budget
+    checkBudgetExceedance(financial[currentUser.username].financial, amount, date);
 
     updateExpenseList();
     clearFormFields();
     closeModal();
 }
+
+function checkBudgetExceedance(expenses, newAmount, newDate) {
+    const dailyBudget = parseFloat(localStorage.getItem('dailyBudget')) || 0;
+    const monthlyBudget = parseFloat(localStorage.getItem('monthlyBudget')) || 0;
+    const yearlyBudget = parseFloat(localStorage.getItem('yearlyBudget')) || 0;
+
+    const newExpenseDate = new Date(newDate);
+    let dailyTotal = 0, monthlyTotal = 0, yearlyTotal = 0;
+
+    expenses.forEach(expense => {
+        const expenseDate = new Date(expense.date);
+        if (expenseDate.toDateString() === newExpenseDate.toDateString()) {
+            dailyTotal += parseFloat(expense.amount);
+        }
+        if (expenseDate.getMonth() === newExpenseDate.getMonth() && expenseDate.getFullYear() === newExpenseDate.getFullYear()) {
+            monthlyTotal += parseFloat(expense.amount);
+        }
+        if (expenseDate.getFullYear() === newExpenseDate.getFullYear()) {
+            yearlyTotal += parseFloat(expense.amount);
+        }
+    });
+
+    // Include the new expense in the totals
+    dailyTotal += newAmount;
+    monthlyTotal += newAmount;
+    yearlyTotal += newAmount;
+
+    // Check if any budget is exceeded
+    if (dailyTotal > dailyBudget) {
+        alert(`Daily budget exceeded! Total: $${dailyTotal}, Limit: $${dailyBudget}`);
+    }
+    if (monthlyTotal > monthlyBudget) {
+        alert(`Monthly budget exceeded! Total: $${monthlyTotal}, Limit: $${monthlyBudget}`);
+    }
+    if (yearlyTotal > yearlyBudget) {
+        alert(`Yearly budget exceeded! Total: $${yearlyTotal}, Limit: $${yearlyBudget}`);
+    }
+}
+
 
 function openEditModal(expense) {   // Opens the menu for adding/editing items
     if (expense) {                  // Checks if an item was opened
