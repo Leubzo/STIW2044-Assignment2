@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/financial.css" />
+
+
+</head>
+
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar style=" --background: linear-gradient(to right, #5d1049 0%, #662454 100%);
+">
+                <ion-title>Expense Tracker</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button id="signOutButton">Sign Out</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list id="expenseList">
+                <!-- Dynamically populated list of financial -->
+            </ion-list>
+            <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+                <ion-fab-button color="primary" id="addExpenseButton" aria-label="Add New Expense">
+                    <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+            </ion-fab>
+        </ion-content>
+
+        <!-- Expense Add/Edit Modal -->
+        <ion-modal id="expenseModal">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-title>Expense Menu</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <form id="expenseForm">
+                    <input type="hidden" id="expenseId" value=""> <!--  hidden input field to  store the expense ID -->
+                    <ion-item>
+                        <ion-label position="floating">Category</ion-label>
+                        <ion-select id="expenseCategory" required>
+                            <ion-select-option value="food">Food</ion-select-option>
+                            <ion-select-option value="transportation">Transport</ion-select-option>
+                            <ion-select-option value="utilities">Utilities</ion-select-option>
+                            <ion-select-option value="entertainment">Entertainment</ion-select-option>
+                            <ion-select-option value="other">Other</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Amount</ion-label>
+                        <ion-input type="number" id="expenseAmount" placeholder="..." required
+                            max="1000"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Date</ion-label>
+                        <ion-input type="date" id="expenseDate" placeholder="Select date" required></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Description</ion-label>
+                        <ion-input type="text" id="expenseDescription" placeholder="..."
+                            required></ion-input>
+                    </ion-item>
+                    
+                    <ion-button expand="block" type="submit" id="saveExpense" style="display: block; margin: 0 auto; max-width: 200px;">Save Expense</ion-button>
+                    <ion-button expand="block" color="medium" style="display: block; margin: 0 auto; max-width: 200px;" onclick="closeModal()">Cancel</ion-button>
+
+                </form>
+
+
+
+            </ion-content>
+        </ion-modal>
+    </ion-app>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <script src="js/financial.js"></script>
+</body>
+
+</html>

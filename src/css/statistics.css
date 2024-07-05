@@ -1,0 +1,10 @@
+:root {
+  --ion-color-primary: #4a86e8;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --ion-item-background-color: #1e1e1e;
+}
+ion-card-title {
+  color: #ffffff;
+}

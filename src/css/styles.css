@@ -1,0 +1,125 @@
+:root {
+  --ion-color-primary: #5d1049;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --ion-item-background-color: #1e1e1e;
+}
+
+body,
+html,
+ion-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background: var(--ion-background-color);
+}
+
+ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: var(--ion-background-color);
+}
+
+.login-card {
+  background-color: var(
+    --ion-item-background-color
+  );
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-item {
+  --border-color: transparent;
+  --background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.form-control input {
+  background: #333;
+  color: #ddd;
+  border: 2px solid #444;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-control label {
+  color: #bbb;
+}
+
+
+.custom-button {
+  --background: linear-gradient(to right, #5d1049 0%, #6f225b 100%);
+  --border-radius: 4px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 20px;
+  color: var(--ion-text-color);
+}
+
+.custom-button:hover {
+  --background: linear-gradient(to left, #5d1049 0%, #6f225b 100%);
+  opacity: 0.85;
+}
+
+ion-toolbar {
+  background-color: #333;
+  color: #fff;
+}
+
+ion-select {
+  --color: var(--ion-color-primary-contrast);
+
+  --background: var(
+    --ion-item-background-color
+  );
+}
+
+
+ion-select::part(placeholder),
+ion-select::part(icon) {
+  color: white !important;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around; /* Distributes space evenly */
+  width: 100%;
+}
+
+.custom-button {
+  --background: linear-gradient(to right, #5d1049 0%, #6f225b 100%);
+  --border-radius: 4px;
+  margin-top: 10px;
+  flex-grow: 1; /* Makes each button expand to fill the flex container */
+  margin-left: 5px; /* Adds a small gap between the buttons */
+  margin-right: 5px;
+}
+
+.login-card {
+  background-color: var(--ion-item-background-color);
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

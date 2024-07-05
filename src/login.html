@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup/Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css">
+    <link rel="stylesheet" href="css/fields.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar color="primary">
+                <ion-title style="color: var(--ion-color-primary-contrast);">Welcome to Expense Tracker</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-justify-content-center ion-align-items-center">
+            <div class="login-card">
+                <ion-item lines="full">
+                    <ion-label position="floating">Username</ion-label>
+                    <ion-input id="username" type="text" required></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input id="password" type="password" required></ion-input>
+                </ion-item>
+                <div class="button-container">
+                    <ion-button expand="block" id="loginBtn" class="custom-button">Login</ion-button>
+                    <ion-button expand="block" id="signupBtn" class="custom-button">Signup</ion-button>
+                </div>
+            </div>
+        </ion-content>
+    </ion-app>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/login.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+:root {
+  --ion-color-primary: #5d1049;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-background-color: #121212;
+  --ion-text-color: #ffffff;
+  --ion-item-background-color: #1e1e1e;
+}
+
+ion-avatar {
+  flex: 0 0 auto;
+}
+ion-avatar span {
+  font-size: calc(12px + (18 - 12) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: bold;
+  white-space: nowrap;
+ 
+  overflow: hidden;
+ 
+  text-overflow: ellipsis;
+ 
+}
+ion-list {
+  padding: 8px;
+}
+ion-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.473);
+}
+
+ion-label {
+  flex: 1;
+  margin-bottom: 20px !important;
+  padding-left: 15px;
+}
+ion-note {
+  flex: 0 0 auto;
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+ion-input,
+ion-select {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  --padding-top: 4px;
+  --padding-bottom: 4px;
+}
+
+
+ion-button {
+  --height: 50px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.delete-button {
+  --background: var(--ion-color-danger);
+  --color: white;
+}
+
+ion-fab-button {
+  --border-radius: 12px;
+  --background: linear-gradient(to right, #788cff 0%, #5577ff 100%) !important;
+
+  --color: white;
+  --box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+  width: 56px;
+  height: 56px;
+}
+ion-icon {
+  font-size: 1.5rem;
+}
+.native-input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+#expenseModal ion-header ion-toolbar {
+  --background: #5d1049;
+}
+#ion-overlay-1 div.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-ios {
+  --background: #5d1049;
+}
+
+#expenseModal ion-header ion-toolbar ion-title {
+  color: #fff;
+}
+div.alert-radio-label.sc-ion-alert-md {
+  color: #fff;
+}

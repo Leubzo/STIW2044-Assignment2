@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense statistics</title>
+    <link rel="stylesheet" href="css/statistics.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+
+    <style>
+        canvas {
+            max-width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <ion-app>
+        <ion-header>
+            <ion-toolbar style=" --background: linear-gradient(to right, #5d1049 0%, #662454 100%);
+">
+                <ion-title>Expense Tracker</ion-title>
+                <ion-buttons slot="end">
+                    <ion-button id="signOutButton">Sign Out</ion-button>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-card>
+                <ion-card-header style="text-align: center;">
+                    <ion-card-title style="width: 100%;">Pie Chart of Expenses</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <canvas id="categoryPieChart"></canvas>
+                </ion-card-content>
+            </ion-card>
+        </ion-content>
+    </ion-app>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/statistics.js"></script>
+</body>
+
+</html>
