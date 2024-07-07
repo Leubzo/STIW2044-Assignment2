@@ -1,25 +1,17 @@
-# Assignment 2 - Bader
+# Assignment 2
 
-## Prerequisites
-You need npm installed on your machine to run this project.
+Lebaili Zouhir - 274786
 
 ## Setup
-Clone the repository and install dependencies:
 
-
-```
-npm install
-```
-
-Running the Project
-```
-npm start
-```
-This command serves the project at http://localhost:8080 using http-server.
-
-Syncing to Android app
-
+Install requirements using terminal and command 
 
 ```
-npm run sync
+npm install --force
 ```
+
+Install http-server extension in VS Code
+
+Start the server by pressing "Go Live" at the bottom right of the window
+
+
