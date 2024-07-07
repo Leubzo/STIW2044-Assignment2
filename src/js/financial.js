@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log('hi');
     updateExpenseList();
 
     $('#signOutButton').click(function () {
