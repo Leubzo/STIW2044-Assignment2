@@ -1,20 +1,20 @@
 $(document).ready(function () {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
-    const userfinancial = (currentUser && financial[currentUser.username]) ? financial[currentUser.username].financial : [];
+    const expenseList = JSON.parse(localStorage.getItem('userexpenseList')) || {};
+    const userexpenseList = (currentUser && expenseList[currentUser.username]) ? expenseList[currentUser.username].expenseList : [];
 
-    displayExpenses(userfinancial);
-    displayTotalExpenses(userfinancial);
+    displayExpenses(userexpenseList);
+    displayTotalExpenses(userexpenseList);
 });
 
-function displayExpenses(financial) {
+function displayExpenses(expenseList) {
     const list = $('#expenseList');
     list.empty();
-    if (financial.length === 0) {
+    if (expenseList.length === 0) {
         list.append('<ion-item>No expenses found.</ion-item>');
         return;
     }
-    financial.forEach(expense => {
+    expenseList.forEach(expense => {
         const formattedAmount = `RM ${parseFloat(expense.amount).toFixed(2)}`;
         const item = $(`
             <ion-item lines="full">
@@ -29,12 +29,12 @@ function displayExpenses(financial) {
     });
 }
 
-function displayTotalExpenses(financial) {
+function displayTotalExpenses(expenseList) {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
 
-    const monthlyExpenses = financial.filter(expense => {
+    const monthlyExpenses = expenseList.filter(expense => {
         const expenseDate = new Date(expense.date);
         return expenseDate.getMonth() === currentMonth && expenseDate.getFullYear() === currentYear;
     });

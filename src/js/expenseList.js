@@ -21,7 +21,7 @@ function addOrUpdateExpense() {
     const date = $('#expenseDate').val();
     const description = $('#expenseDescription').val();
 
-    let financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
+    let expenseList = JSON.parse(localStorage.getItem('userexpenseList')) || {};
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
     if (!currentUser || !currentUser.username) {
@@ -29,15 +29,15 @@ function addOrUpdateExpense() {
         return;
     }
 
-    if (!financial[currentUser.username]) {
-        financial[currentUser.username] = { financial: [] };
+    if (!expenseList[currentUser.username]) {
+        expenseList[currentUser.username] = { expenseList: [] };
     }
 
     // Add or update expense
     if (id) {
-        const index = financial[currentUser.username].financial.findIndex(exp => exp.id === id);
+        const index = expenseList[currentUser.username].expenseList.findIndex(exp => exp.id === id);
         if (index !== -1) {
-            financial[currentUser.username].financial[index] = {
+            expenseList[currentUser.username].expenseList[index] = {
                 id: id,
                 amount: amount,
                 date: date,
@@ -45,7 +45,7 @@ function addOrUpdateExpense() {
             };
         }
     } else {
-        financial[currentUser.username].financial.push({
+        expenseList[currentUser.username].expenseList.push({
             id: Date.now().toString(),
             amount: amount,
             date: date,
@@ -53,8 +53,8 @@ function addOrUpdateExpense() {
         });
     }
 
-    // Save updated financial data
-    localStorage.setItem('userfinancial', JSON.stringify(financial));
+    // Save updated expenseList data
+    localStorage.setItem('userexpenseList', JSON.stringify(expenseList));
 
     updateExpenseList();
     clearFormFields();
@@ -92,32 +92,32 @@ function openEditModal(expense) {   // Opens the menu for adding/editing items
 
 function deleteExpense(expenseId) { // Delete function for removing items from list
 
-    let financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
+    let expenseList = JSON.parse(localStorage.getItem('userexpenseList')) || {};
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (!currentUser || !financial[currentUser.username]) {
-        console.log('No current user or user financial found');
+    if (!currentUser || !expenseList[currentUser.username]) {
+        console.log('No current user or user expenseList found');
         return;
     }
 
-    financial[currentUser.username].financial = financial[currentUser.username].financial.filter(expense => expense.id !== expenseId);
-    localStorage.setItem('userfinancial', JSON.stringify(financial));
+    expenseList[currentUser.username].expenseList = expenseList[currentUser.username].expenseList.filter(expense => expense.id !== expenseId);
+    localStorage.setItem('userexpenseList', JSON.stringify(expenseList));
     updateExpenseList();
 }
 
 function updateExpenseList() { // Update function for displaying updated list of items
 
-    const financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
+    const expenseList = JSON.parse(localStorage.getItem('userexpenseList')) || {};
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    if (!currentUser || !financial[currentUser.username]) {
-        console.log('No financial or current user found');
+    if (!currentUser || !expenseList[currentUser.username]) {
+        console.log('No expenseList or current user found');
         displayPlaceholder(true);
         return;
     }
 
-    const userfinancial = financial[currentUser.username].financial;
-    if (userfinancial.length > 0) {
-        displayfinancial(userfinancial);
+    const userexpenseList = expenseList[currentUser.username].expenseList;
+    if (userexpenseList.length > 0) {
+        displayexpenseList(userexpenseList);
         displayPlaceholder(false);
     } else {
         displayPlaceholder(true);
@@ -125,10 +125,10 @@ function updateExpenseList() { // Update function for displaying updated list of
 }
 
 
-function displayfinancial(financial) { // Function for displaying various expenses added to a list
+function displayexpenseList(expenseList) { // Function for displaying various expenses added to a list
     const list = $('#expenseList');
     list.empty();
-    $.each(financial, function (index, expense) {
+    $.each(expenseList, function (index, expense) {
         const formattedAmount = `RM ${parseFloat(expense.amount).toFixed(2)}`;
         const item = $(`
             <ion-item lines="full"> 

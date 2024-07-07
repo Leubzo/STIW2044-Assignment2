@@ -68,15 +68,15 @@
 
         <ion-tabs>
             <ion-tab-bar slot="bottom">
-                <ion-tab-button tab="financial" id="financialTab">
+                <ion-tab-button tab="expenseList" id="expenseListTab">
                     <ion-icon name="cash-outline"></ion-icon>
                 </ion-tab-button>
-                <ion-tab-button tab="statistics" id="statisticsTab">
+                <ion-tab-button tab="totalExpenses" id="totalExpensesTab">
                     <ion-icon name="clipboard-outline"></ion-icon>
                 </ion-tab-button>
             </ion-tab-bar>
 
-            <ion-tab tab="financial">
+            <ion-tab tab="expenseList">
                 <ion-content id="contentContainer">
                 </ion-content>
             </ion-tab>
@@ -89,15 +89,15 @@
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <script>
         $(document).ready(function () {
-    // Load financial page by default
-    $('#contentContainer').load('financial.html');
+    // Load expenseList page by default
+    $('#contentContainer').load('expenseList.html');
 
     // Handle clicking the tabs at the bottom
-    $('#financialTab').click(function () {
-        $('#contentContainer').load('financial.html');
+    $('#expenseListTab').click(function () {
+        $('#contentContainer').load('expenseList.html');
     });
-    $('#statisticsTab').click(function () {
-        $('#contentContainer').load('statistics.html');
+    $('#totalExpensesTab').click(function () {
+        $('#contentContainer').load('totalExpenses.html');
     });
 });
 
