@@ -30,7 +30,16 @@ function displayExpenses(financial) {
 }
 
 function displayTotalExpenses(financial) {
-    const total = financial.reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const monthlyExpenses = financial.filter(expense => {
+        const expenseDate = new Date(expense.date);
+        return expenseDate.getMonth() === currentMonth && expenseDate.getFullYear() === currentYear;
+    });
+
+    const total = monthlyExpenses.reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
     const formattedTotal = `RM ${total.toFixed(2)}`;
-    $('#totalExpenses').text(`Total Expenses: ${formattedTotal}`);
+    $('#totalExpenses').text(`Total Expenses for ${currentDate.toLocaleString('default', { month: 'long' })}: ${formattedTotal}`);
 }
