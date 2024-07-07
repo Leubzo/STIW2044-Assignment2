@@ -41,8 +41,7 @@ function addOrUpdateExpense() {
                 id: id,
                 amount: amount,
                 date: date,
-                description: description,
-                category: category
+                description: description
             };
         }
     } else {
@@ -50,8 +49,7 @@ function addOrUpdateExpense() {
             id: Date.now().toString(),
             amount: amount,
             date: date,
-            description: description,
-            category: category
+            description: description
         });
     }
 
@@ -164,7 +162,6 @@ function clearFormFields() { // Function to clear the expense window fields for 
     $('#expenseAmount').val('');
     $('#expenseDate').val('');
     $('#expenseDescription').val('');
-    $('#expenseCategory').val('');
     $('#expenseId').val('');
 }
 
