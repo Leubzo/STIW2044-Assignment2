@@ -1,5 +1,5 @@
 :root {
-  --ion-color-primary: #4a86e8;
+  --ion-color-primary: #1cb673;
   --ion-color-primary-contrast: #ffffff;
   --ion-background-color: #121212;
   --ion-text-color: #ffffff;
@@ -7,4 +7,27 @@
 }
 ion-card-title {
   color: #ffffff;
+}
+
+ion-card {
+  background-color: #1cb673; 
+  color: white; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  margin: 20px; 
+}
+
+ion-card-header {
+  background-color: #1cb673; 
+  color: #ffcc00; 
+}
+
+ion-card-title {
+  font-size: 1.4rem; 
+}
+
+ion-card-content {
+  font-size: 1.2rem; 
+  text-align: center; 
+  padding: 10px; 
 }

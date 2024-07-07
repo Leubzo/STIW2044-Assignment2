@@ -19,7 +19,7 @@
 <body>
     <ion-app>
         <ion-header>
-            <ion-toolbar style=" --background: linear-gradient(to right, #5d1049 0%, #662454 100%);
+            <ion-toolbar style=" --background: linear-gradient(to right, #1cb673 0%, #1cb673 100%);
 ">
                 <ion-title>Expense Tracker</ion-title>
                 <ion-buttons slot="end">
@@ -29,13 +29,12 @@
         </ion-header>
 
         <ion-content>
-            <ion-card>
-                <ion-card-header style="text-align: center;">
-                    <ion-card-title style="width: 100%;">Pie Chart of Expenses</ion-card-title>
+            <ion-list id="expenseList"></ion-list>
+            <ion-card id="totalExpensesCard">
+                <ion-card-header>
+                    <ion-card-title>Total Expenses</ion-card-title>
                 </ion-card-header>
-                <ion-card-content>
-                    <canvas id="categoryPieChart"></canvas>
-                </ion-card-content>
+                <ion-card-content id="totalExpenses"></ion-card-content>
             </ion-card>
         </ion-content>
     </ion-app>

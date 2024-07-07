@@ -1,5 +1,5 @@
 :root {
-  --ion-color-primary: #5d1049;
+  --ion-color-primary: #1cb673;
   --ion-color-primary-contrast: #ffffff;
   --ion-background-color: #121212;
   --ion-text-color: #ffffff;
@@ -76,10 +76,10 @@ ion-icon {
 }
 
 #expenseModal ion-header ion-toolbar {
-  --background: #5d1049;
+  --background: #1cb673;
 }
 #ion-overlay-1 div.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-ios {
-  --background: #5d1049;
+  --background: #1cb673;
 }
 
 #expenseModal ion-header ion-toolbar ion-title {

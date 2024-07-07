@@ -1,5 +1,5 @@
 :root {
-  --ion-color-primary: #5d1049;
+  --ion-color-primary: #1cb673;
   --ion-color-primary-contrast: #ffffff;
   --ion-background-color: #121212;
   --ion-text-color: #ffffff;
@@ -63,7 +63,7 @@ ion-item {
 
 
 .custom-button {
-  --background: linear-gradient(to right, #5d1049 0%, #6f225b 100%);
+  --background: linear-gradient(to right, #1cb673 0%, #1cb673 100%);
   --border-radius: 4px;
   margin-top: 10px;
   width: 100%;
@@ -72,7 +72,7 @@ ion-item {
 }
 
 .custom-button:hover {
-  --background: linear-gradient(to left, #5d1049 0%, #6f225b 100%);
+  --background: linear-gradient(to left, #1cb673 0%, #1cb673 100%);
   opacity: 0.85;
 }
 
@@ -97,16 +97,16 @@ ion-select::part(icon) {
 
 .button-container {
   display: flex;
-  justify-content: space-around; /* Distributes space evenly */
+  justify-content: space-around; 
   width: 100%;
 }
 
 .custom-button {
-  --background: linear-gradient(to right, #5d1049 0%, #6f225b 100%);
+  --background: linear-gradient(to right, #1cb673 0%, #1cb673 100%);
   --border-radius: 4px;
   margin-top: 10px;
-  flex-grow: 1; /* Makes each button expand to fill the flex container */
-  margin-left: 5px; /* Adds a small gap between the buttons */
+  flex-grow: 1; 
+  margin-left: 5px; 
   margin-right: 5px;
 }
 

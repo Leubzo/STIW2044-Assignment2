@@ -1,34 +1,36 @@
 $(document).ready(function () {
-    $.getScript('https://cdn.jsdelivr.net/npm/chart.js', function() { // Function to calculate expenses into a pie chart
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
-        const userfinancial = (currentUser && financial[currentUser.username]) ? financial[currentUser.username].financial : [];
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const financial = JSON.parse(localStorage.getItem('userfinancial')) || {};
+    const userfinancial = (currentUser && financial[currentUser.username]) ? financial[currentUser.username].financial : [];
 
-        const categories = ['food', 'transportation', 'utilities', 'entertainment', 'other'];
-        const financialstatistics = categories.map(category => {
-            return {
-                category: category,
-                total: userfinancial.filter(expense => expense.category === category)
-                                    .reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0)
-            };
-        });
-
-        renderPieChart(financialstatistics);
-    });
+    displayExpenses(userfinancial);
+    displayTotalExpenses(userfinancial);
 });
 
-function renderPieChart(financialstatistics) { // Function to render the pie chart of expenses
-    const ctx = $('#categoryPieChart');
-    const data = {
-        labels: financialstatistics.map(expense => expense.category),
-        datasets: [{
-            data: financialstatistics.map(expense => expense.total),
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
-        }]
-    };
-
-    new Chart(ctx, {
-        type: 'pie',
-        data: data
+function displayExpenses(financial) {
+    const list = $('#expenseList');
+    list.empty();
+    if (financial.length === 0) {
+        list.append('<ion-item>No expenses found.</ion-item>');
+        return;
+    }
+    financial.forEach(expense => {
+        const formattedAmount = `RM ${parseFloat(expense.amount).toFixed(2)}`;
+        const item = $(`
+            <ion-item lines="full">
+                <ion-label class="ion-text-wrap">
+                    <h2>${expense.description}</h2>
+                    <p>${expense.date}</p>
+                </ion-label>
+                <ion-note slot="end" color="danger">${formattedAmount}</ion-note>
+            </ion-item>
+        `);
+        list.append(item);
     });
+}
+
+function displayTotalExpenses(financial) {
+    const total = financial.reduce((sum, expense) => sum + parseFloat(expense.amount || 0), 0);
+    const formattedTotal = `RM ${total.toFixed(2)}`;
+    $('#totalExpenses').text(`Total Expenses: ${formattedTotal}`);
 }
