@@ -2,6 +2,7 @@
 
 Lebaili Zouhir - 274786
 
+Video presentation - https://youtu.be/nbjkiZi2uSk
 ## Setup
 
 Install requirements using terminal and command 
